@@ -14,6 +14,8 @@ export default defineConfig({
     openMode: 1
   },
   env: {
-    baseUrl: "https://restful-booker.herokuapp.com"
+    baseUrl: "https://restful-booker.herokuapp.com",
+    username: "admin",
+    password: "password123"
   },
 });
