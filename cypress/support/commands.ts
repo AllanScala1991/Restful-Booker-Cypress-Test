@@ -17,8 +17,8 @@ Cypress.Commands.add('createBooking', (payload: {
     totalprice : number,
     depositpaid : boolean,
     bookingdates : {
-        checkin : Date,
-        checkout : Date
+        checkin : string,
+        checkout : string
     },
     additionalneeds : string
 }) => {
@@ -41,10 +41,10 @@ declare namespace Cypress {
         totalprice : number,
         depositpaid : boolean,
         bookingdates : {
-            checkin : Date,
-            checkout : Date
+            checkin : string,
+            checkout : string
         },
         additionalneeds : string
-    }): Chainable<Element>;
+    }): Chainable<{body:{bookingid: string}}>;
     }
 }
