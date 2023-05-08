@@ -11,12 +11,40 @@ Cypress.Commands.add('token', (username: string, password: string) => {
     })
 })
 
+Cypress.Commands.add('createBooking', (payload: {
+    firstname : string,
+    lastname : string,
+    totalprice : number,
+    depositpaid : boolean,
+    bookingdates : {
+        checkin : Date,
+        checkout : Date
+    },
+    additionalneeds : string
+}) => {
+    cy.request({
+        url: `${Cypress.env("baseUrl")}/booking`,
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: payload
+    })
+})
+
 declare namespace Cypress {
     interface Chainable {
-      /**
-       * Custom command to select DOM element by data-cy attribute.
-       * @example cy.dataCy('greeting')
-       */
       token(username: string, password: string): Chainable<Element>;
+      createBooking(payload: {
+        firstname : string,
+        lastname : string,
+        totalprice : number,
+        depositpaid : boolean,
+        bookingdates : {
+            checkin : Date,
+            checkout : Date
+        },
+        additionalneeds : string
+    }): Chainable<Element>;
     }
-  }
+}
