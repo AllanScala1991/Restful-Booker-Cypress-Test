@@ -34,7 +34,7 @@ Cypress.Commands.add('createBooking', (payload: {
 
 declare namespace Cypress {
     interface Chainable {
-      token(username: string, password: string): Chainable<Element>;
+      token(username: string, password: string): Chainable<{body:{token: string}}>;
       createBooking(payload: {
         firstname : string,
         lastname : string,
